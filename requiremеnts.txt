@@ -1,0 +1,8 @@
+requests
+dotenv
+pytest==7.2.1
+sqlalchemy==1.4.46
+aiohttp
+greenlet
+asyncpg
+black
