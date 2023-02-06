@@ -1,8 +1,7 @@
 from aiohttp import web
-from database import engine, Base
-from views import AdsView
-
 from flask import Flask, jsonify
+
+from database import Base, engine
 from views import AdsView
 
 
@@ -20,14 +19,14 @@ app = web.Application()
 app.cleanup_ctx.append(context_orm)
 app.add_routes(
     [
-        web.get('/ads/{id:\d+}/', AdsView),
-        web.post('/ads/', AdsView),
-        web.patch('/ads/{id:\d+}/', AdsView),
-        web.delete('/ads/{id:\d+}/', AdsView)
+        web.get("/ads/{id:\d+}/", AdsView),
+        web.post("/ads/", AdsView),
+        web.patch("/ads/{id:\d+}/", AdsView),
+        web.delete("/ads/{id:\d+}/", AdsView),
     ]
 )
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     web.run_app(app)
 # app.add_url_rule('/ads/<int:id>', view_func=AdsView.as_view('ads'), methods={'GET', 'PATCH', 'DELETE'})
 # app.add_url_rule('/ads/', view_func=AdsView.as_view('ads_create'), methods={'POST'})
